@@ -5,8 +5,6 @@ import { rootHandler, helloHandler } from './handlers'
 
 const redisClient = createClient()
 
-redisClient.on('error', (err) => console.log('Redis Client Error', err))
-
 const app = express()
 const port = process.env.PORT || 8080
 const DEFAULT_EXPIRATION = 3600

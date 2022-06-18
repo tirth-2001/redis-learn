@@ -57,6 +57,6 @@ app.get('/photos/:id', (req, res) => __awaiter(void 0, void 0, void 0, function*
 // 	})
 // }
 app.listen(port, () => {
-    return console.log(`Server is listening on ${port}`);
+    return console.log(`Server is running at ${port}`);
 });
 //# sourceMappingURL=index.js.map

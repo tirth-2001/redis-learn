@@ -8,7 +8,7 @@
 		"build": "rimraf dist && tsc",
 		"start": "node dist/index.js",
 		"ts.check": "tsc --project tsconfig.json",
-		"push-build": "git commit --amend --no-edit && git push && git pull && echo 'Pushed build'"
+		"push-build": "git add . && git commit --amend --no-edit && git push && git pull && echo 'Pushed build'"
 	},
 	"pre-commit": [
 		"ts.check",

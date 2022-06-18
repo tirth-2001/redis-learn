@@ -8,7 +8,7 @@ import { rootHandler, helloHandler } from './handlers'
 // redisClient.connect()
 
 const app = express()
-const port = process.env.PORT || 8081
+const port = process.env.PORT || 8080
 
 app.get('/', rootHandler)
 app.get('/hello/:name', helloHandler)
@@ -55,5 +55,5 @@ app.get('/photos/:id', async (req, res) => {
 // }
 
 app.listen(port, () => {
-	return console.log(`Server is running at ${port}`)
+	return console.log(`Server is listening on ${port}`)
 })

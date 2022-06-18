@@ -19,7 +19,7 @@ const handlers_1 = require("./handlers");
 // const redisClient = createClient()
 // redisClient.connect()
 const app = (0, express_1.default)();
-const port = process.env.PORT || 8081;
+const port = process.env.PORT || 8080;
 app.get('/', handlers_1.rootHandler);
 app.get('/hello/:name', handlers_1.helloHandler);
 // app.get('/photos', async (req, res) => {
@@ -57,6 +57,6 @@ app.get('/photos/:id', (req, res) => __awaiter(void 0, void 0, void 0, function*
 // 	})
 // }
 app.listen(port, () => {
-    return console.log(`Server is running at ${port}`);
+    return console.log(`Server is listening on ${port}`);
 });
 //# sourceMappingURL=index.js.map

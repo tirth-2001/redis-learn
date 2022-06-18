@@ -5,27 +5,27 @@ import { rootHandler, helloHandler } from './handlers'
 
 const redisClient = createClient()
 
+redisClient.connect()
+
 const app = express()
 const port = process.env.PORT || 8080
-const DEFAULT_EXPIRATION = 3600
 
 app.get('/', rootHandler)
 app.get('/hello/:name', helloHandler)
 
 app.get('/photos', async (req, res) => {
-	const albumId = req.query.albumId
-	const response = await redisClient.get(`photos?albumId=${albumId}`)
-	if (response) {
+	const response = await redisClient.get('photos')
+	const photos = response ? JSON.parse(response) : null
+
+	if (!!photos.length) {
+		console.log('Found in cache', photos)
+
 		return res.json(JSON.parse(response))
 	} else {
 		const { data } = await axios.get(
-			`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`
+			`https://jsonplaceholder.typicode.com/photos`
 		)
-		redisClient.setEx(
-			`photos?albumId=${albumId}`,
-			DEFAULT_EXPIRATION,
-			JSON.stringify(data)
-		)
+		await redisClient.set('photos', JSON.stringify(data))
 		res.json(data)
 	}
 })

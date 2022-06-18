@@ -14,26 +14,28 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const axios_1 = __importDefault(require("axios"));
-const redis_1 = require("redis");
+// import { createClient } from 'redis'
 const handlers_1 = require("./handlers");
-const redisClient = (0, redis_1.createClient)();
+// const redisClient = createClient()
+// redisClient.connect()
 const app = (0, express_1.default)();
 const port = process.env.PORT || 8080;
-const DEFAULT_EXPIRATION = 3600;
 app.get('/', handlers_1.rootHandler);
 app.get('/hello/:name', handlers_1.helloHandler);
-app.get('/photos', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const albumId = req.query.albumId;
-    const response = yield redisClient.get(`photos?albumId=${albumId}`);
-    if (response) {
-        return res.json(JSON.parse(response));
-    }
-    else {
-        const { data } = yield axios_1.default.get(`https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`);
-        redisClient.setEx(`photos?albumId=${albumId}`, DEFAULT_EXPIRATION, JSON.stringify(data));
-        res.json(data);
-    }
-}));
+// app.get('/photos', async (req, res) => {
+// 	const response = await redisClient.get('photos')
+// 	const photos = response ? JSON.parse(response) : null
+// 	if (!!photos.length) {
+// 		console.log('Found in cache', photos)
+// 		return res.json(JSON.parse(response))
+// 	} else {
+// 		const { data } = await axios.get(
+// 			`https://jsonplaceholder.typicode.com/photos`
+// 		)
+// 		await redisClient.set('photos', JSON.stringify(data))
+// 		res.json(data)
+// 	}
+// })
 app.get('/photos/:id', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { id } = req.params;
     const { data } = yield axios_1.default.get(`https://jsonplaceholder.typicode.com/photos/${id}`);

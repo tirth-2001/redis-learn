@@ -1114,6 +1114,15 @@ picomatch@^2.0.4, picomatch@^2.2.1:
   resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.1.tgz#3ba3833733646d9d3e4995946c1365a67fb07a42"
   integrity sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==
 
+post-commit@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/post-commit/-/post-commit-0.0.1.tgz#4e15066dc376275677e18bbde32a2e0dceaa1a76"
+  integrity sha512-HiBE1nYpe/qy+n8jGKhjmnSapex5LABeoNqygiOz+TL8EYeRQRJdIaRX+JwjQssUOX64wH5jxwW2Kiz8JZx4xg==
+  dependencies:
+    cross-spawn "^5.0.1"
+    spawn-sync "^1.0.15"
+    which "1.2.x"
+
 pre-commit@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/pre-commit/-/pre-commit-1.2.2.tgz#dbcee0ee9de7235e57f79c56d7ce94641a69eec6"

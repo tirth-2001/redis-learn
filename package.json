@@ -6,15 +6,22 @@
 	"scripts": {
 		"dev": "nodemon src/index.ts",
 		"build": "rimraf dist && tsc",
-		"start": "node dist/index.js"
+		"start": "node dist/index.js",
+		"ts.check": "tsc --project tsconfig.json",
+		"push-build": "git commit --ammend --no-edit && git push && git pull && echo 'Pushed build'"
 	},
 	"pre-commit": [
+		"ts.check",
 		"build"
+	],
+	"post-commit": [
+		"push-build"
 	],
 	"devDependencies": {
 		"@types/express": "^4.17.13",
 		"@types/node": "^17.0.40",
 		"nodemon": "^2.0.16",
+		"post-commit": "^0.0.1",
 		"pre-commit": "^1.2.2",
 		"rimraf": "^3.0.2",
 		"ts-node": "^10.8.1",

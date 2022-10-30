@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.helloHandler = exports.rootHandler = void 0;
 const helloBuilder = (name) => ({ hello: name });
 const rootHandler = (_req, res) => {
-    return res.send('API is running fine 2! 🤓');
+    return res.send('API is running fine 3! 🤓');
 };
 exports.rootHandler = rootHandler;
 const helloHandler = (req, res) => {

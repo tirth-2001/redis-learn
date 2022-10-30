@@ -9,7 +9,7 @@ type HelloBuilder = (name: string) => HelloResponse
 const helloBuilder: HelloBuilder = (name) => ({ hello: name })
 
 export const rootHandler = (_req: Request, res: any) => {
-	return res.send('API is running fine 2! 🤓')
+	return res.send('API is running fine 3! 🤓')
 }
 
 export const helloHandler = (req: Request, res: Response) => {

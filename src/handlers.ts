@@ -8,7 +8,7 @@ type HelloBuilder = (name: string) => HelloResponse
 
 const helloBuilder: HelloBuilder = (name) => ({ hello: name })
 
-export const rootHandler = (_req: Request, res: Response) => {
+export const rootHandler = (_req: Request, res) => {
 	return res.send('API is running fine 2! 🤓')
 }
 

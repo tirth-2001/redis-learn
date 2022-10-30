@@ -7,6 +7,8 @@ import { rootHandler, helloHandler } from './handlers'
 
 // redisClient.connect()
 
+console.log('Starting server...')
+
 const app = express()
 const port = process.env.PORT || 8080
 

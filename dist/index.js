@@ -18,6 +18,7 @@ const axios_1 = __importDefault(require("axios"));
 const handlers_1 = require("./handlers");
 // const redisClient = createClient()
 // redisClient.connect()
+console.log('Starting server...');
 const app = (0, express_1.default)();
 const port = process.env.PORT || 8080;
 app.get('/', handlers_1.rootHandler);

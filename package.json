@@ -11,13 +11,17 @@
 		"add-build": "git add dist"
 	},
 	"pre-commit": [
-		"ts.check",
-		"build",
-		"add-build"
+
 	],
+	"husky": {
+		"hooks": {
+			 "pre-commit": "echo \"[Husky] pre-commit\""
+		}
+	},
 	"devDependencies": {
 		"@types/express": "^4.17.13",
 		"@types/node": "^17.0.40",
+		"husky": "^8.0.1",
 		"nodemon": "^2.0.16",
 		"pre-commit": "^1.2.2",
 		"rimraf": "^3.0.2",
